@@ -9,7 +9,7 @@ def choose_player_markers():
     p1_choice = ''
 
     while p1_choice not in ['X', 'O']:
-        p1_choice = input('Player 1 do you want to be X or O? ')
+        p1_choice = input('Player 1 do you want to be X or O? ').strip().upper()
 
         if p1_choice not in ['X', 'O']:
             print("Sorry, you can't be that.")
@@ -49,7 +49,7 @@ def win_check(board, marker):
 
 import random
 
-def choose_first():
+def choose_first_player():
     return random.randint(1, 2)
 
 def is_position_empty(board, position):
@@ -84,10 +84,53 @@ def player_choice(board):
 
 def want_replay():
     while True:
-        play_again = input('Do you want to play again? (Y/N) ').strip()
+        play_again = input('Do you want to play again? (Y/N) ').strip().upper()
         if play_again not in ['Y', 'N']:
             print("Sorry, that's not a valid choice, please try again.")
             continue
         
         return play_again == 'Y'
 
+def play_round(board, marker, curr_player):
+    display_board(board)
+
+    print(f"It's Player {curr_player}'s turn ({marker}):")
+    position = player_choice(board)
+
+    place_marker(board, marker, position)
+
+def get_next_player(curr_player):
+    return (curr_player % 2) + 1
+
+def play_game():
+    board = [' '] * 9
+    player_markers = choose_player_markers()
+    curr_player = choose_first_player()
+    
+    while True:
+        marker = player_markers[curr_player - 1]
+        play_round(board, marker, curr_player)
+
+        did_win = win_check(board, marker)
+        if did_win:
+            print(f'Congratulation Player {curr_player}, you win!')
+            return
+        
+        if board_full_check(board):
+            print("It's a draw")
+            return
+        
+        curr_player = get_next_player(curr_player)
+        
+def play_games():
+    print("Welcome to TIC TAC TOE!")    
+    play = True
+
+    while play:
+        play_game()
+
+        play = want_replay()
+
+    print("Thank you for playing!")
+
+play_games()

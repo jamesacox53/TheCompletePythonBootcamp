@@ -66,3 +66,8 @@
 # at the top of the file and then have the 
 # if __name__ == "__main__": block to execute the code they want
 # to run when the file is run directly.
+
+# Me: When a file is being run directly then __name__ of the file is
+# set to "__main__". But if the file has been imported then __main__
+# of the file is set to the name of the file. So when one.py is imported
+# __name__ of the file is set to "one".

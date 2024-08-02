@@ -12,12 +12,11 @@ class Player():
         else:
             self.all_cards.append(new_cards)
 
-    def __str__(self):
-        num_cards = len(self.all_cards)
+    def has_cards(self):
+        return len(self.all_cards) > 0
+    
+    def can_go_to_war(self):
+        return len(self.all_cards) >= 5
 
-        if num_cards <= 0:
-            return f'Player {self.name} has no card.'
-        if num_cards == 1:
-            return f'Player {self.name} has 1 card.'
-        else:
-            return f'Player {self.name} has {num_cards} cards.'
+    def __str__(self):
+        return self.name

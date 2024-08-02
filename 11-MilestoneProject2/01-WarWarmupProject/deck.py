@@ -22,3 +22,18 @@ class Deck():
     def deal_one(self):
         return self.all_cards.pop()
     
+    def split_deck(self, num_partitions):
+        deck_partitions = []
+
+        for _ in range(num_partitions):
+            deck_partitions.append([])
+
+        partition = 0
+
+        while self.all_cards:
+            card = self.all_cards.pop()
+
+            deck_partitions[partition].append(card)
+            partition = (partition + 1) % num_partitions
+
+        return deck_partitions

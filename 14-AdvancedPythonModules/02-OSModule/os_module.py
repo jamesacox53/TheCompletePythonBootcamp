@@ -12,7 +12,7 @@ print("-----------------")
 
 import shutil
 
- shutil.move('.\\14-AdvancedPythonModules\\02-OSModule', 'C:\\Users\\jamescox')
+shutil.move('.\\14-AdvancedPythonModules\\02-OSModule', 'C:\\Users\\jamescox')
 
 import send2trash
 

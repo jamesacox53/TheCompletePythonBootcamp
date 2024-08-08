@@ -5,9 +5,6 @@ project_path = os.getcwd()
 directory_path = os.path.join(project_path, "17-PDFsAndSpreadsheetCSV", "01-CSVFiles")
 
 example_path = os.path.join(directory_path, "example.csv")
-makeup_new_path = os.path.join(directory_path, "makeup_new.csv")
-to_save_file_path = os.path.join(directory_path, "to_save_file.csv")
-
 
 def get_csv_data_lines(path):
     data = open(path, 'r', encoding="utf-8")
